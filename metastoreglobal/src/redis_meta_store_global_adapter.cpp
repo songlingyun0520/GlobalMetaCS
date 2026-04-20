@@ -1,8 +1,8 @@
-#include "metastore/redis_meta_store_global_adapter.h"
+#include "metastoreglobal/include/metastore/redis_meta_store_global_adapter.h"
 
 #include <memory>
 
-#include "metastore/redis_meta_store_backend.h"
+#include "common/metastore/redis_meta_store_backend.h"
 
 namespace metastore {
 

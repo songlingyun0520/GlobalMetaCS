@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "metastore/status.h"
+#include "metastoreglobal/include/metastore/status.h"
 
 namespace metastore {
 

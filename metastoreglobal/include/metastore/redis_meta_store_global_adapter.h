@@ -3,8 +3,8 @@
 #include <memory>
 #include <vector>
 
-#include "metastore/meta_store_backend.h"
-#include "metastore/meta_store_global_adapter.h"
+#include "common/metastore/meta_store_backend.h"
+#include "meta_store_global_adapter.h"
 
 namespace metastore {
 

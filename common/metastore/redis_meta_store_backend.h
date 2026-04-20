@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "metastore/meta_store_backend.h"
+#include "meta_store_backend.h"
 
 struct redisContext;
 

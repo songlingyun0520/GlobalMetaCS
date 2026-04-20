@@ -1,4 +1,4 @@
-#include "metastore/redis_meta_store_backend.h"
+#include "redis_meta_store_backend.h"
 
 #include <hiredis/hiredis.h>
 

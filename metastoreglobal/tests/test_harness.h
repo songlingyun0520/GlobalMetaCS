@@ -17,7 +17,7 @@
 #include <unistd.h>
 #include <vector>
 
-#include "metastore/redis_meta_store_global_adapter.h"
+#include "metastoreglobal/include/metastore/redis_meta_store_global_adapter.h"
 
 struct TestCaseEntry {
     std::string name;

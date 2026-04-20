@@ -1,7 +1,7 @@
 CXX := g++
 HIREDIS_CFLAGS := $(shell pkg-config --cflags hiredis)
 HIREDIS_LIBS := $(shell pkg-config --libs hiredis)
-CXXFLAGS := -std=c++17 -Wall -Wextra -Werror -Iinclude -I../common -Isrc -Itests $(HIREDIS_CFLAGS)
+CXXFLAGS := -std=c++17 -Wall -Wextra -Werror -I.. $(HIREDIS_CFLAGS)
 LDFLAGS := $(HIREDIS_LIBS)
 
 SOURCES := \

@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "metastore/meta_store_types.h"
+#include "meta_store_types.h"
 
 namespace metastore {
 
