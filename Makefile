@@ -21,10 +21,11 @@ GMM_SERVER_OBJS = $(GMM_PROG)_svc.o $(GMM_PROG)_xdr.o \
                   metastoreglobal/src/redis_meta_store_global_adapter.o
 GMM_CLIENT_OBJS = $(GMM_PROG)_clnt.o $(GMM_PROG)_xdr.o \
                   global_meta_client.o global_meta_client_test.o
+LOCAL_META_OBJS = local_meta_management.o local_meta_management_test.o
 
 .PHONY: all clean
 
-all: gmm_server gmm_client_test
+all: gmm_server gmm_client_test local_meta_management_test
 
 # ── rpcgen 代码生成 ─────────────────────────────────────────────────
 $(GMM_GENERATED): $(GMM_PROG).x
@@ -44,6 +45,8 @@ common/metastore/redis_meta_store_backend.o: common/metastore/redis_meta_store_b
 metastoreglobal/src/redis_meta_store_global_adapter.o: metastoreglobal/include/metastore/redis_meta_store_global_adapter.h common/metastore/redis_meta_store_backend.h
 global_meta_client.o:     $(GMM_PROG).h global_meta_client.h gmm_types.h
 global_meta_client_test.o: global_meta_client.h gmm_types.h
+local_meta_management.o: local_meta_management.h gmm_types.h
+local_meta_management_test.o: local_meta_management.h gmm_types.h
 
 # ── 链接目标 ────────────────────────────────────────────────────────
 gmm_server: $(GMM_GENERATED) $(GMM_SERVER_OBJS)
@@ -52,6 +55,9 @@ gmm_server: $(GMM_GENERATED) $(GMM_SERVER_OBJS)
 gmm_client_test: $(GMM_GENERATED) $(GMM_CLIENT_OBJS)
 	$(CXX) -o $@ $(GMM_CLIENT_OBJS) $(LIBS)
 
+local_meta_management_test: $(LOCAL_META_OBJS)
+	$(CXX) -o $@ $(LOCAL_META_OBJS) -lpthread
+
 clean:
-	rm -f gmm_server gmm_client_test \
-	      $(GMM_GENERATED) $(GMM_SERVER_OBJS) $(GMM_CLIENT_OBJS)
+	rm -f gmm_server gmm_client_test local_meta_management_test \
+	      $(GMM_GENERATED) $(GMM_SERVER_OBJS) $(GMM_CLIENT_OBJS) $(LOCAL_META_OBJS)

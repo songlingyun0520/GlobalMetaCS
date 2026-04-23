@@ -14,6 +14,17 @@ The client side provides a C++ wrapper named `GlobalMetaClient`, and the
 end-to-end test program `gmm_client_test` exercises insert, query, duplicate
 insert, update, and delete scenarios.
 
+This repository now also contains a process-local `LocalMetaManagement`
+component for managing local DRAM / SSD metadata locations:
+
+- `GlobalMetaManagement`: answers "where to find data globally"
+- `LocalMetaManagement`: answers "where the data is on this node"
+
+For the Chinese quick-start documentation of the local metadata component, see:
+
+- [local_meta_README.md](./local_meta_README.md)
+- [local_meta_module.md](./local_meta_module.md)
+
 ## Files
 
 ```text
@@ -23,8 +34,12 @@ global_meta_management.h/.cpp  In-memory server-side storage logic
 global_meta_server.cpp         RPC service handlers
 global_meta_client.h/.cpp      C++ client wrapper
 global_meta_client_test.cpp    End-to-end client test program
+local_meta_management.h/.cpp   Local DRAM / SSD metadata logic
+local_meta_management_test.cpp Local metadata test program
 Makefile                       Build script
 global_meta_module.md          Detailed design notes
+local_meta_module.md           Local metadata design notes
+local_meta_README.md           Local metadata Chinese README
 ```
 
 `rpcgen` generates these files from `global_meta.x` during build:
@@ -86,6 +101,7 @@ This will:
 1. Run `rpcgen -N global_meta.x`
 2. Build `gmm_server`
 3. Build `gmm_client_test`
+4. Build `local_meta_management_test`
 
 To remove generated files and binaries:
 
@@ -238,3 +254,6 @@ Check:
 - [global_meta_module.md](./global_meta_module.md)
 - [global_meta_client_test.cpp](./global_meta_client_test.cpp)
 - [global_meta_server.cpp](./global_meta_server.cpp)
+- [local_meta_README.md](./local_meta_README.md)
+- [local_meta_module.md](./local_meta_module.md)
+- [local_meta_management_test.cpp](./local_meta_management_test.cpp)
